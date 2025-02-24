@@ -9,7 +9,7 @@ const SavedRecipes = () => {
   useEffect(() => {
     const fetchSavedRecipes = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/recipes/saved', {
+        const response = await axios.get('https://wortal-recipes-2.onrender.com/api/recipes/saved', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setSavedRecipes(response.data);

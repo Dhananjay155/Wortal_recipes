@@ -12,7 +12,7 @@ const RecipeCard = ({ recipe }) => {
     
     setIsSaving(true);
     try {
-      await axios.post('http://localhost:5000/api/recipes/save', {
+      await axios.post('https://wortal-recipes-2.onrender.com/api/recipes/save', {
         recipeId: recipe.id,
         title: recipe.title,
         image: recipe.image

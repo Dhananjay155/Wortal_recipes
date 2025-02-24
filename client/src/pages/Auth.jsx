@@ -24,7 +24,7 @@ const Auth = () => {
     try {
       const endpoint = isLogin ? '/login' : '/register';
       const response = await axios.post(
-        `http://localhost:5000/api/auth${endpoint}`,
+        `https://wortal-recipes-2.onrender.com/api/auth${endpoint}`,
         formData
       );
       
