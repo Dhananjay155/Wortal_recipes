@@ -3,7 +3,11 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const AuthContext = createContext(null);
 
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
 };
 
 export const AuthProvider = ({ children }) => {
@@ -25,9 +29,10 @@ export const AuthProvider = ({ children }) => {
       // For demo purposes, we'll just store the user locally
       const newUser = { email, id: Date.now().toString() };
       localStorage.setItem('user', JSON.stringify(newUser));
+      setUser(newUser);
       return { data: newUser, error: null };
     } catch (error) {
-      return { data: null, error: { message: 'Failed to create account' } };
+      return { data: null, error };
     }
   };
 
@@ -40,7 +45,7 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       return { data: user, error: null };
     } catch (error) {
-      return { data: null, error: { message: 'Invalid credentials' } };
+      return { data: null, error };
     }
   };
 
@@ -50,7 +55,7 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       return { error: null };
     } catch (error) {
-      return { error: { message: 'Failed to sign out' } };
+      return { error };
     }
   };
 

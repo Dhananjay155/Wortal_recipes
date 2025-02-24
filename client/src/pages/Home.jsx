@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { searchRecipes, getRandomRecipes } from '../services/recipeService';
+import { useAuth } from '../context/AuthContext';
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [featuredRecipes, setFeaturedRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
     loadFeaturedRecipes();
@@ -27,6 +31,15 @@ const Home = () => {
     setLoading(false);
   };
 
+  const handleViewRecipe = (recipeId) => {
+    if (!user) {
+      navigate('/login');
+    } else {
+      // Navigate to recipe detail page when implemented
+      navigate(`/recipe/${recipeId}`);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Hero Section */}
@@ -36,14 +49,14 @@ const Home = () => {
           alt="Delicious Food"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-opacity-50 flex flex-col items-center justify-center text-white">
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
           <h1 className="text-5xl font-bold mb-4">Welcome to our</h1>
           <h2 className="text-6xl font-bold mb-8">Recipe Collection</h2>
           <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
               placeholder="Search for recipes..."
-              className="w-[500px] px-6 py-3 rounded-full text-gray-800 bg-amber-100 bg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-[500px] px-6 py-3 rounded-full text-gray-800 bg-amber-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -74,7 +87,10 @@ const Home = () => {
                   <p className="text-gray-600 mb-4">
                     Ready in {recipe.readyInMinutes} minutes • {recipe.servings} servings
                   </p>
-                  <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors">
+                  <button 
+                    onClick={() => handleViewRecipe(recipe.id)}
+                    className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors"
+                  >
                     View Recipe
                   </button>
                 </div>
@@ -122,7 +138,10 @@ const Home = () => {
                 <p className="text-gray-600 mb-4">
                   Ready in {recipe.readyInMinutes} minutes • {recipe.servings} servings
                 </p>
-                <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors">
+                <button 
+                  onClick={() => handleViewRecipe(recipe.id)}
+                  className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors"
+                >
                   View Recipe
                 </button>
               </div>
@@ -132,6 +151,6 @@ const Home = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Home;
