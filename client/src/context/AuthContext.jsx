@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is logged in from localStorage
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -25,8 +24,6 @@ export const AuthProvider = ({ children }) => {
 
   const signUp = async (email, password) => {
     try {
-      // In a real app, you would make an API call here
-      // For demo purposes, we'll just store the user locally
       const newUser = { email, id: Date.now().toString() };
       localStorage.setItem('user', JSON.stringify(newUser));
       setUser(newUser);
@@ -38,8 +35,7 @@ export const AuthProvider = ({ children }) => {
 
   const signIn = async (email, password) => {
     try {
-      // In a real app, you would validate credentials against an API
-      // For demo purposes, we'll just simulate a successful login
+     
       const user = { email, id: Date.now().toString() };
       localStorage.setItem('user', JSON.stringify(user));
       setUser(user);
