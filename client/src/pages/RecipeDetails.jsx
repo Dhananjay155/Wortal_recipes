@@ -17,7 +17,7 @@ function RecipeDetails() {
         setError(null);
         
         const response = await fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=278a54a8a413448596733b9b91bb771b`
+          `https://api.spoonacular.com/recipes/${id}/information?apiKey=e435d412e220415bac79bc5ca919f2a3`
         );
 
         if (!response.ok) {
