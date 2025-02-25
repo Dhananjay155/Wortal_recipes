@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RecipeDetails from './pages/RecipeDetails';
+import SavedRecipes from './components/SavedRecipes';
 import { AuthProvider } from './context/AuthContext';
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/recipe/:id" element={<RecipeDetails />} />
+            <Route path="/saved-recipes" element={<SavedRecipes />} />
           </Routes>
         </div>
       </Router>

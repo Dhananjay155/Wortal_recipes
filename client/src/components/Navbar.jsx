@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ChefHat } from 'lucide-react';
+import { ChefHat, Heart } from 'lucide-react';
 
 const Navbar = () => {
   const { user, signOut } = useAuth();
@@ -20,6 +20,13 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             {user ? (
               <>
+                <Link
+                  to="/saved-recipes"
+                  className="flex items-center text-gray-700 hover:text-orange-500 transition-colors"
+                >
+                  <Heart className="h-5 w-5 mr-1" />
+                  <span>Saved Recipes</span>
+                </Link>
                 <span className="text-gray-700">Welcome, {user.email}</span>
                 <button
                   onClick={signOut}

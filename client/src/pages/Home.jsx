@@ -45,11 +45,11 @@ const Home = () => {
       {/* Hero Section */}
       <div className="relative h-[500px] rounded-xl overflow-hidden my-8">
         <img
-          src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80"
+          src="https://cdn.pixabay.com/photo/2023/06/20/17/30/youtube-banner-8077450_1280.jpg"
           alt="Delicious Food"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
+        <div className="absolute inset-0  bg-opacity-50 flex flex-col items-center justify-center text-white">
           <h1 className="text-5xl font-bold mb-4">Welcome to our</h1>
           <h2 className="text-6xl font-bold mb-8">Recipe Collection</h2>
           <form onSubmit={handleSearch} className="relative">
