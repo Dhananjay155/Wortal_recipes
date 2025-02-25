@@ -54,7 +54,7 @@ const Home = () => {
             <input
               type="text"
               placeholder="Search for recipes..."
-              className="w-[500px] px-6 py-3 rounded-full text-gray-800 bg-amber-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-[350px] px-6 py-3 rounded-full text-gray-800 bg-amber-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
