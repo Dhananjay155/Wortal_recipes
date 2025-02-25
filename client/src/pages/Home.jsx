@@ -35,7 +35,6 @@ const Home = () => {
     if (!user) {
       navigate('/login');
     } else {
-      // Navigate to recipe detail page when implemented
       navigate(`/recipe/${recipeId}`);
     }
   };
