@@ -41,7 +41,6 @@ const Home = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Hero Section */}
       <div className="relative h-[500px] rounded-xl overflow-hidden my-8">
         <img
           src="https://cdn.pixabay.com/photo/2023/06/20/17/30/youtube-banner-8077450_1280.jpg"
@@ -69,7 +68,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Search Results */}
       {searchResults.length > 0 && (
         <div className="my-16">
           <h3 className="text-3xl font-bold mb-8">Search Results</h3>
@@ -99,7 +97,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* Featured Section */}
       <div className="my-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="relative h-[400px] rounded-xl overflow-hidden">
@@ -121,7 +118,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Featured Recipes */}
       <div className="my-16">
         <h3 className="text-3xl font-bold mb-8">Featured Recipes</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
