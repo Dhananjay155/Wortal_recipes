@@ -27,7 +27,6 @@ function RecipeDetails() {
         const data = await response.json();
         setRecipe(data);
 
-        // Check if recipe is saved
         const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes') || '[]');
         const isRecipeSaved = savedRecipes.some(r => r.id === parseInt(id));
         setIsSaved(isRecipeSaved);
@@ -49,11 +48,9 @@ function RecipeDetails() {
       const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes') || '[]');
       
       if (isSaved) {
-        // Remove recipe from saved recipes
         const filteredRecipes = savedRecipes.filter(r => r.id !== recipe.id);
         localStorage.setItem('savedRecipes', JSON.stringify(filteredRecipes));
       } else {
-        // Add recipe to saved recipes
         const recipeToSave = {
           id: recipe.id,
           title: recipe.title,
