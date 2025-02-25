@@ -7,16 +7,13 @@ function OrderDetails() {
   const [quantity, setQuantity] = useState(1);
   const [specialInstructions, setSpecialInstructions] = useState('');
   
-  // Find the menu item based on id
   const menuItem = MENU_ITEMS.find(item => item.id === parseInt(id));
 
   const handleSubmitOrder = (e) => {
     e.preventDefault();
     
-    // Get existing orders from localStorage
     const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
     
-    // Create new order
     const newOrder = {
       id: Date.now(),
       menuItemId: parseInt(id),
@@ -28,10 +25,8 @@ function OrderDetails() {
       total: menuItem.price * quantity
     };
     
-    // Save order
     localStorage.setItem('orders', JSON.stringify([...existingOrders, newOrder]));
     
-    // Redirect to orders page
     navigate('/orders');
   };
 
@@ -103,7 +98,6 @@ function OrderDetails() {
   );
 }
 
-// Menu items data
 const MENU_ITEMS = [
   {
     id: 1,
